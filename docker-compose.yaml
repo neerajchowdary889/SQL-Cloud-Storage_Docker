@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  sqlite:
+    image: keinos/sqlite3
+    volume: sqlite-data:/mydatabase
+    ports: "5432:5432"
+    restart: always
+volumes:
+  sqlite-data:
