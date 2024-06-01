@@ -362,13 +362,17 @@ func (user *DBUser) AlterTable(addFields map[string]string, dropFields []string)
     defer dbMutex.Unlock()
 
     addFieldDefs := make([]string, 0, len(addFields))
-    for field, fieldType := range addFields {
-        addFieldDefs = append(addFieldDefs, fmt.Sprintf("ADD %s %s", field, strings.ToUpper(fieldType)))
+    if len(addFields) != 0{
+        for field, fieldType := range addFields {
+            addFieldDefs = append(addFieldDefs, fmt.Sprintf("ADD %s %s", field, strings.ToUpper(fieldType)))
+        }
     }
 
     dropFieldDefs := make([]string, 0, len(dropFields))
-    for _, field := range dropFields {
-        dropFieldDefs = append(dropFieldDefs, fmt.Sprintf("DROP COLUMN %s", field))
+    if len(dropFields) != 0 {
+        for _, field := range dropFields {
+            dropFieldDefs = append(dropFieldDefs, fmt.Sprintf("DROP COLUMN %s", field))
+        }
     }
 
     alter := fmt.Sprintf(
