@@ -63,7 +63,3 @@ The server runs on port 5150. To start the server, run the `main.go` file.
 * Gin
 * Gorilla sessions
 * SQL database driver (depends on your SQL database)
-
-## License
-
-This project is licensed under the MIT License.
